@@ -2,22 +2,17 @@ import java.time.LocalDate;
 
 public class Libro {
     private String titulo;
-    private String autor;
+    private Autor autor;
     private int añoPublicacion;
     private String isbn;
+    private boolean prestado;
 
-    public Libro(String titulo, String autor, int añopublicacion, String isbn){
+    public Libro(String titulo, Autor autor, int añopublicacion, String isbn, boolean prestado){
         this.titulo = titulo;
         this.autor = autor;
         this.añoPublicacion = añopublicacion;
         this.isbn = isbn;
-    }
-
-    public void mostrarInformacion(){
-        System.out.println("Titulo: " + this.titulo);
-        System.out.println("Autor: " + this.autor);
-        System.out.println("Año de publicación: " + this.añoPublicacion);
-        System.out.println("Isbn: " + this.isbn + "\n");
+        this.prestado = prestado;
     }
 
     public String getTitulo(){
@@ -32,5 +27,14 @@ public class Libro {
         } else{
             return false;
         }
+    }
+
+    //@Override
+    public String toString(){
+        return "Titulo: " + titulo + "\n" + "Id autor: " + autor.getId() + "\n" + "Nombre autor: " + autor.getNombreAutor() + "\n" + "Correo autor:  " + autor.getCorreoElectronico() + "\n" + "Año publicacion: " + String.valueOf(añoPublicacion) + "\n" + "Clave isbn: " + isbn + "\n" + "Libro prestado: " + prestado + "\n";
+    }
+
+    public boolean getPrestado(){
+        return prestado;
     }
 }

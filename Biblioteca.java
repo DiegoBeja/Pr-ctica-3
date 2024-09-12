@@ -1,20 +1,29 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Biblioteca {
     private ArrayList<Libro> libros;
+    private ArrayList<Libro> librosPrestados;
+    private List<String> librosBiblioteca;
     
     public Biblioteca(){
         this.libros = new ArrayList<>();
+        this.librosPrestados = new ArrayList<>();
+        this.librosBiblioteca = new ArrayList<>();
     }
 
     public void agregarLibro(Libro libro){
         libros.add(libro);
+
     }
 
-    public void mostrarLibros(){    
-        for(Libro x : this.libros){
-            x.mostrarInformacion();
+    public List<String> listarLibros(){
+        librosBiblioteca.clear();
+
+        for(Libro i : libros){
+            librosBiblioteca.add(i.toString() + "\n");
         }
+        return librosBiblioteca; 
     }
 
     public void buscarLibroPorTitulo(String Titulo){
@@ -24,6 +33,16 @@ public class Biblioteca {
             }
         }
     } 
+
+    public ArrayList<Libro> librosPrestado(){
+        for(Libro i : this.libros){
+            if(i.getPrestado() == true){
+                librosPrestados.add(i);
+            }
+        }
+
+        return librosPrestados;
+    }
     
 }
 
